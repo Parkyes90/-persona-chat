@@ -13,3 +13,12 @@ services:
       - |
         python manage.py migrate
         python manage.py runserver 0.0.0.0:8000
+  container-frontend:
+    build:
+        context: services/frontends/container
+        target: development
+    ports:
+      - "3000:3000"
+    volumes:
+      - /home/app/container/node_modules/
+      - ./services/frontends/container:/home/app/container
