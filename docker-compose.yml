@@ -22,3 +22,14 @@ services:
     volumes:
       - /home/app/container/node_modules/
       - ./services/frontends/container:/home/app/container
+  proxy:
+    image: nginx
+    depends_on:
+      - chatting-backend
+      - container-frontend
+    restart: always
+    volumes:
+      - ./dev/nginx/proxy.conf:/etc/nginx/proxy.conf
+      - ./dev/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "888:80"
