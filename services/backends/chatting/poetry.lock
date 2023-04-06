@@ -82,6 +82,21 @@ docs = ["furo (>=2021.8.17b43,<2021.9.0)", "sphinx (>=3.5.0)", "sphinx-notfound-
 testing = ["coverage[toml] (>=5.0a4)", "pytest (>=4.6.11)"]
 
 [[package]]
+name = "django-redis"
+version = "5.2.0"
+description = "Full featured redis cache backend for Django."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+Django = ">=2.2"
+redis = ">=3,<4.0.0 || >4.0.0,<4.0.1 || >4.0.1"
+
+[package.extras]
+hiredis = ["redis[hiredis] (>=3,!=4.0.0,!=4.0.1)"]
+
+[[package]]
 name = "msgpack"
 version = "1.0.5"
 description = "MessagePack serializer"
@@ -151,7 +166,7 @@ python-versions = ">=2"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.11"
-content-hash = "a1c6473150a955547d4d9731f182f9075fc229a33c59861c86ae37c4bd660262"
+content-hash = "4b11065c3e46ed891658f29154df6fb2df6d84fc002f8b3643433ff7ca1bae4a"
 
 [metadata.files]
 asgiref = []
@@ -160,6 +175,7 @@ channels = []
 channels-redis = []
 django = []
 django-environ = []
+django-redis = []
 msgpack = []
 psycopg = []
 redis = []

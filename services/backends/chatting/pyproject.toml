@@ -11,6 +11,7 @@ channels = "^4.0.0"
 channels-redis = "^4.1.0"
 django-environ = "^0.10.0"
 psycopg = "^3.1.8"
+django-redis = "^5.2.0"
 
 [tool.poetry.dev-dependencies]
 
