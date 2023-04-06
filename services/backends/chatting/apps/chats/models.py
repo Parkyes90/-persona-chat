@@ -8,6 +8,10 @@ class Channel(TimeStampedModel):
         "users.User", on_delete=models.CASCADE, related_name="channels"
     )
 
+    @property
+    def group_name(self):
+        return f"channel_{self.id}"
+
 
 class Message(TimeStampedModel):
     channel = models.ForeignKey(
