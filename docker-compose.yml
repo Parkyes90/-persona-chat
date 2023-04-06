@@ -31,6 +31,10 @@ services:
       - |
         python manage.py migrate
         python manage.py runserver 0.0.0.0:8000
+    environment:
+      - DB_NAME=chatting
+      - DB_USER=postgres
+      - DB_HOST=chatting_db
   container-frontend:
     build:
       context: services/frontends/container

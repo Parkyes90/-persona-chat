@@ -6,7 +6,11 @@ authors = ["parkyes90 <parkyes90@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-Django = "^4.1.7"
+Django = "^4.2"
+channels = "^4.0.0"
+channels-redis = "^4.1.0"
+django-environ = "^0.10.0"
+psycopg = "^3.1.8"
 
 [tool.poetry.dev-dependencies]
 
