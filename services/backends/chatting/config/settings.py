@@ -34,6 +34,7 @@ CSRF_TRUSTED_ORIGINS = ["http://localhost:888", "http://127.0.0.1:888"]
 # Application definition
 
 INSTALLED_APPS = [
+    "daphne",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -43,11 +44,11 @@ INSTALLED_APPS = [
     "drf_spectacular",
     "drf_spectacular_sidecar",
     "rest_framework",
-    "channels",
     "django_extensions",
     "corsheaders",
     "apps.users",
     "apps.chats",
+    "channels",
 ]
 
 MIDDLEWARE = [
@@ -193,3 +194,13 @@ SPECTACULAR_SETTINGS = {
 }
 
 AUTH_USER_MODEL = "users.User"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": ["redis://redis:6379/2"],
+            "symmetric_encryption_keys": [SECRET_KEY],
+        },
+    },
+}
