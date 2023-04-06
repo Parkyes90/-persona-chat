@@ -44,8 +44,10 @@ INSTALLED_APPS = [
     "drf_spectacular_sidecar",
     "rest_framework",
     "channels",
+    "django_extensions",
     "corsheaders",
     "apps.users",
+    "apps.chats",
 ]
 
 MIDDLEWARE = [
