@@ -12,7 +12,10 @@ class ChatConsumer(AsyncWebsocketConsumer):
         self.channel_id = None
 
     async def connect(self):
-        self.user = self.scope["user"]
+        try:
+            self.user = self.scope["user"]
+        except KeyError:
+            return await self.close()
 
         if self.user.is_anonymous:
             return await self.close()
@@ -28,7 +31,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         await self.accept()
 
     async def disconnect(self, code):
-        if not self.user.is_anonymous:
+        if self.channel:
             await self.channel_layer.group_discard(
                 self.channel.group_name, self.channel_name
             )
