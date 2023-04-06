@@ -29,8 +29,8 @@ SECRET_KEY = env("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:888", "http://127.0.0.1:888"]
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "drf_spectacular_sidecar",
     "rest_framework",
     "channels",
+    "apps.users",
 ]
 
 MIDDLEWARE = [
@@ -182,3 +183,5 @@ SPECTACULAR_SETTINGS = {
     # description, however it comes at the cost of having more components.
     "COMPONENT_SPLIT_REQUEST": True,
 }
+
+AUTH_USER_MODEL = "users.User"
