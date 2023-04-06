@@ -2,7 +2,7 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import LoginPage from "./pages/login-page";
 import SignUpPage from "./pages/sign-up-page";
-import Chat from "./components/chat";
+import ChatPage from "./pages/chat-page";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/chats",
-    element: <Chat />,
+    element: <ChatPage />,
   },
 ]);
 
