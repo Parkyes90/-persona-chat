@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "api-server"
+version = "0.1.0"
+description = ""
+authors = ["parkyes90 <parkyes90@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.4"
+celery = "^5.3.4"
+kafka-python = "^2.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
