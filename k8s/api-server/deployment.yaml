@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: api-server
+  template:
+    metadata:
+      labels:
+        component: api-server
+        app: api-server
+    spec:
+      containers:
+        - name: api-server
+          image: parkyes90/k8s-template/api-server:dev
+          ports:
+            - containerPort: 8000
+
+          command: [
+            "/bin/sh",
+            "-c",
+            "python manage.py migrate
+            && python manage.py runserver 0.0.0.0:8000",
+          ]
