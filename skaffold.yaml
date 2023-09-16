@@ -1,0 +1,18 @@
+apiVersion: skaffold/v4beta6
+kind: Config
+metadata:
+  name: k-s-template
+build:
+  artifacts:
+    - image: parkyes90/k8s-template/api-server
+      context: services/api-server
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "**/*.py"
+            dest: .
+manifests:
+  rawYaml:
+    - k8s/api-server/deployment.yaml
+    - k8s/api-server/service.yaml
