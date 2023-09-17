@@ -12,7 +12,18 @@ build:
         manual:
           - src: "**/*.py"
             dest: .
+    - image: parkyes90/k8s-template/web-client
+      context: services/web-client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.{ts,tsx}"
+            dest: .
 manifests:
   rawYaml:
     - k8s/api-server/deployment.yaml
     - k8s/api-server/service.yaml
+    - k8s/web-client/deployment.yaml
+    - k8s/web-client/service.yaml
+

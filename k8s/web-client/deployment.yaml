@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: web-client
+  template:
+    metadata:
+      labels:
+        component: web-client
+        app: web-client
+    spec:
+      containers:
+        - name: api-server
+          image: parkyes90/k8s-template/web-client:dev
+          ports:
+            - containerPort: 3000
+
+          command: [
+            "/bin/sh",
+            "-c",
+            "npm run dev",
+          ]
