@@ -22,6 +22,7 @@ build:
             dest: .
 manifests:
   rawYaml:
+    - k8s/ingress.yaml
     - k8s/api-server/deployment.yaml
     - k8s/api-server/service.yaml
     - k8s/web-client/deployment.yaml
