@@ -23,8 +23,7 @@ build:
 manifests:
   rawYaml:
     - k8s/ingress.yaml
-    - k8s/api-server/deployment.yaml
-    - k8s/api-server/service.yaml
-    - k8s/web-client/deployment.yaml
-    - k8s/web-client/service.yaml
-
+  kustomize:
+    paths:
+      - k8s/services/api-server/overlays/local
+      - k8s/services/web-client/overlays/local
