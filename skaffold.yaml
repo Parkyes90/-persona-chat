@@ -26,3 +26,4 @@ manifests:
       - k8s/services/api-server/overlays/local
       - k8s/services/web-client/overlays/local
       - k8s/ingresses/overlays/local
+      - k8s/services/dashboard/overlays/local
