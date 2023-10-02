@@ -6,7 +6,7 @@ spec:
   ingressClassName: nginx
   rules:
     - host: k8s-template.test
-    - http:
+      http:
         paths:
           - path: /
             pathType: Prefix
