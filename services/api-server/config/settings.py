@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-fp-id5-e3jksy^dn@&wkrfb858tdp*yj@o(3m5convk57uznqg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["k8s-template.test"]
 
 
 # Application definition
