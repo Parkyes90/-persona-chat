@@ -27,7 +27,7 @@ manifests:
       - k8s/services/web-client/overlays/local
       - k8s/ingresses/overlays/local
 profiles:
-  - name: k8s-template
+  - name: k8stemplate
     activation:
       - kubeContext: minikube
         command: dev
