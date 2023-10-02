@@ -14,7 +14,7 @@ spec:
         app: web-client
     spec:
       containers:
-        - name: api-server
+        - name: web-client
           image: parkyes90/k8s-template/web-client:dev
           ports:
             - containerPort: 3000
