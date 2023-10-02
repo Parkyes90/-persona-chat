@@ -43,3 +43,13 @@ spec:
                 name: api-server
                 port:
                   number: 8000
+    - host: kibana.k8s-template.test
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kibana-kb-http
+                port:
+                  number: 5601
