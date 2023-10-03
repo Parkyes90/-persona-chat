@@ -28,7 +28,7 @@ COPY . ./
 
 # api-server-user 작업 디렉토리와 그 안의 모든 파일의 소유권 변경
 RUN chown -R api-server-user:api-server-user /api-server
-
+RUN chown -R api-server-user:api-server-user /var/log
 
 # api-server-user로 실행
 USER api-server-user
