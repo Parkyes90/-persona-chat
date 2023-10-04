@@ -1,0 +1,40 @@
+apiVersion: beat.k8s.elastic.co/v1beta1
+kind: Beat
+metadata:
+  name: beat
+spec:
+  type: filebeat
+  version: 8.10.2
+  elasticsearchRef:
+    name: elasticsearch
+  config:
+    filebeat.inputs:
+    - type: container
+      paths:
+      - /var/log/containers/*.log
+  daemonSet:
+    podTemplate:
+      spec:
+        dnsPolicy: ClusterFirstWithHostNet
+        hostNetwork: true
+        securityContext:
+          runAsUser: 0
+        containers:
+        - name: filebeat
+          volumeMounts:
+          - name: var-log-containers
+            mountPath: /var/log/containers
+          - name: var-log-pods
+            mountPath: /var/log/pods
+          - name: var-lib-docker-containers
+            mountPath: /var/lib/docker/containers
+        volumes:
+        - name: var-log-containers
+          hostPath:
+            path: /var/log/containers
+        - name: var-log-pods
+          hostPath:
+            path: /var/log/pods
+        - name: var-lib-docker-containers
+          hostPath:
+            path: /var/lib/docker/containers
