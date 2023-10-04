@@ -11,19 +11,19 @@ spec:
     filebeat.autodiscover.providers:
     - node: ${NODE_NAME}
       type: kubernetes
-      hints.default_config.enabled: "false"
+      hints:
+        enabled: true
+        default_config:
+          type: container
+          paths:
+          - /var/log/containers/*${data.kubernetes.container.id}.log
       templates:
-      - condition.equals.kubernetes.namespace: default
-        config:
-        - paths: ["/var/log/containers/*${data.kubernetes.container.id}.log"]
-          type: container
-      - condition.equals.kubernetes.labels.log-label: "true"
-        config:
-        - paths: ["/var/log/containers/*${data.kubernetes.container.id}.log"]
-          type: container
+      - condition.contains:
+          kubernetes.pod.name: api-server
     processors:
-    - add_cloud_metadata: {}
-    - add_host_metadata: {}
+      - add_kubernetes_metadata:
+          in_cluster: true
+      - add_host_metadata: {}
   daemonSet:
     podTemplate:
       spec:
