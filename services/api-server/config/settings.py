@@ -138,8 +138,8 @@ LOGGING = {
     'handlers': {
         'file': {
             'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': '/var/log/api-server.log',  # 로그가 저장될 파일 이름
+            'class': 'core.logging_file_handler.EnsureDirFileHandler',
+            'filename': '/var/log/containers/api-server.log',  # 로그가 저장될 파일 이름
             'formatter': 'verbose',
         },
     },
