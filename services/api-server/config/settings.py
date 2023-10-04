@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
+import sys
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -125,29 +126,18 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': '{levelname} {asctime} {module} {message}',
-            'style': '{',
-        },
-        'simple': {
-            'format': '{levelname} {message}',
-            'style': '{',
-        },
-    },
     'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'core.logging_file_handler.EnsureDirFileHandler',
-            'filename': '/var/log/containers/api-server.log',  # 로그가 저장될 파일 이름
-            'formatter': 'verbose',
+        'console': {
+            'class': 'logging.StreamHandler',
+            'stream': sys.stdout,  # stdout을 사용하도록 설정
         },
     },
     'loggers': {
         'django': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),  # 기본 로그 레벨을 DEBUG로 설정
+            'propagate': False,
         },
+        # 필요에 따라 추가로 설정할 앱 또는 로거에 대한 설정을 여기에 추가할 수 있습니다.
     },
 }
